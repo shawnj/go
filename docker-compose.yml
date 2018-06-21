@@ -4,5 +4,12 @@ services:
   go:
     image: go
     build: .
+    security_opt:
+      - seccomp:unconfined
     ports:
-      - 3000:3000
+      - "3000:3000"
+    expose:
+      - "3000"
+    entrypoint: dlv debug local/myapp -l 0.0.0.0:3000 --headless=true --log=true -- server
+    volumes:
+      - /c/local/:/go/src/local/myapp
