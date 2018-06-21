@@ -12,11 +12,12 @@ FROM golang:alpine
 
 ENV GOPATH /go:$GOPATH
 ENV PATH /go/bin:$PATH
-ADD . /go/src/local/myapp
-WORKDIR /go/src/local/myapp
 RUN apk --no-cache add ca-certificates
 RUN apk add --no-cache git mercurial \
     && go get github.com/derekparker/delve/cmd/dlv
+    
+ADD . /go/src/local/myapp
+WORKDIR /go/src/local/myapp
 RUN go build /go/src/local/myapp/test.go
 RUN go install
 #COPY --from=builder /go/bin/app /go/src/local/app
