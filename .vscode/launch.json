@@ -17,7 +17,7 @@
             "env": {},
             "args": [],
             "showLog": true,
-            "preLaunchTask": "docker-compose",
+            //"preLaunchTask": "docker-compose",
             "postDebugTask": "docker-down"
         }
     ]
