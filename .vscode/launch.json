@@ -16,7 +16,9 @@
             "program": "${workspaceRoot}",
             "env": {},
             "args": [],
-            "showLog": true
+            "showLog": true,
+            "preLaunchTask": "docker-compose",
+            "postDebugTask": "docker-down"
         }
     ]
 }
