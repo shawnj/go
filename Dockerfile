@@ -16,9 +16,9 @@ RUN apk --no-cache add ca-certificates
 RUN apk add --no-cache git mercurial \
     && go get github.com/derekparker/delve/cmd/dlv
     
-ADD . /go/src/local/myapp
-WORKDIR /go/src/local/myapp
-RUN go build /go/src/local/myapp/test.go
+ADD . /go/src/myapp
+WORKDIR /go/src/myapp
+RUN go build /go/src/myapp/main.go
 RUN go install
 #COPY --from=builder /go/bin/app /go/src/local/app
 CMD [ "/go/bin/myapp" ]
