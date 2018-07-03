@@ -3,16 +3,27 @@ package main
 import (
 	"fmt"
 
-	"myapp/newmessage"
+	newmessage "myapp/src"
 )
 
-// NewMessage - is a struct
+type GetName interface {
+	DisplayName() string
+	UpdateName(string)
+}
+
+type errorer func() error
 
 func main() {
 
-	var s = newmessage.NewMessage{Name: "Joe", Message: "Hello newMess"}
+	var msgDis GetName
+	msgDis = &newmessage.NewMessage{}
+	msgDis.UpdateName("Joe")
 
-	fmt.Println(s.NewMess())
+	s := newmessage.NewMessage{}
+	s.UpdateName("Mike")
+	s.UpdateMessage("Hello There")
+
+	fmt.Println(msgDis.DisplayName() + " " + s.DisplayMsg())
 
 	testOne()
 }
@@ -21,9 +32,9 @@ func testOne() {
 	//msg := "hello there"
 	a, b, c := 1, 2, 3
 
-	var aa *int
+	// var aa *int
 
-	aa = &a
+	aa := &a
 
-	fmt.Println(*aa, a, b, c)
+	fmt.Println(aa, a, b, c)
 }
