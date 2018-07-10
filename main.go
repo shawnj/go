@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
+	"time"
 
-	newmessage "myapp/src"
+	newmessage "myapp/newmessage"
 )
 
 type GetName interface {
@@ -26,6 +27,12 @@ func main() {
 	fmt.Println(msgDis.DisplayName() + " " + s.DisplayMsg())
 
 	testOne()
+
+	go func() {
+		fmt.Println("hello func")
+	}()
+
+	time.Sleep(time.Millisecond)
 }
 
 func testOne() {
